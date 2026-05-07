@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ポキポキきゅうり</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="game">
+  <header id="game-header">
+    <h1>ポキポキきゅうり</h1>
+    <div id="round">ROUND 1 / 3</div>
+  </header>
+
+  <main id="cucumber-stage">
+    <img id="cucumber" src="cucumber_straight.png" alt="きゅうり" />
+
+    <div id="meter-overlay">
+      <div id="perfect-zone">
+        <span>PUSH!</span>
+      </div>
+      <div id="cursor"></div>
+    </div>
+  </main>
+
+  <div id="message">赤いところで押せ！</div>
+
+  <button id="tapButton" type="button">ポキッ！！</button>
+
+  <section id="result-screen" class="hidden">
+    <h2 id="final-result"></h2>
+    <img id="result-kappa" src="" alt="結果カッパ" />
+    <p id="score-text"></p>
+    <button id="retryButton" type="button" onclick="location.reload()">もういちど</button>
+  </section>
+</div>
+
+<audio id="bgm" src="bgm.mp3" loop preload="auto"></audio>
+<audio id="pokiSe" src="poki_se.mp3" preload="auto"></audio>
+<audio id="funyaSe" src="funya_se.mp3" preload="auto"></audio>
+
+<script src="game.js"></script>
+</body>
+</html>
