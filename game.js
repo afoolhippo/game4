@@ -1,46 +1,88 @@
-const cursor = document.getElementById("cursor");
-const cucumber = document.getElementById("cucumber");
-const message = document.getElementById("message");
-const tapButton = document.getElementById("tapButton");
-const roundText = document.getElementById("round");
+const titleScreen = document.getElementById("titleScreen");
+const gameScreen = document.getElementById("gameScreen");
+const resultScreen = document.getElementById("resultScreen");
 
-const resultScreen = document.getElementById("result-screen");
-const finalResult = document.getElementById("final-result");
-const resultKappa = document.getElementById("result-kappa");
-const scoreText = document.getElementById("score-text");
+const titleImage = document.getElementById("titleImage");
+const pressStart = document.getElementById("pressStart");
+
+const cucumber = document.getElementById("cucumber");
+
+const cursor = document.getElementById("cursor");
+
+const tapButton = document.getElementById("tapButton");
+
+const roundText = document.getElementById("roundText");
+
+const resultKappa = document.getElementById("resultKappa");
+const resultTitle = document.getElementById("resultTitle");
+const resultScore = document.getElementById("resultScore");
 
 const bgm = document.getElementById("bgm");
+
 const pokiSe = document.getElementById("pokiSe");
 const funyaSe = document.getElementById("funyaSe");
 
+let started = false;
+
 let pos = 0;
-let speed = 6;
+
+let speed = 7;
+
 let direction = 1;
 
 let round = 1;
+
 let goodCount = 0;
-let playing = true;
-let started = false;
 
-function getStageHeight() {
-  return document.getElementById("meter-overlay").clientHeight;
+let playing = false;
+
+/* =========================
+   START
+========================= */
+
+function startGame() {
+
+  if (started) return;
+
+  started = true;
+
+  titleScreen.classList.add("hidden");
+
+  gameScreen.classList.remove("hidden");
+
+  bgm.volume = 0.7;
+
+  bgm.currentTime = 0;
+
+  bgm.play().catch(() => {});
+
+  playing = true;
+
+  updateMeter();
 }
 
-function getCursorHeight() {
-  return cursor.clientHeight || 12;
-}
+titleImage.addEventListener("pointerdown", startGame);
+
+pressStart.addEventListener("pointerdown", startGame);
+
+/* =========================
+   METER
+========================= */
 
 function updateMeter() {
+
   if (!playing) return;
 
-  const stageHeight = getStageHeight();
-  const cursorHeight = getCursorHeight();
-  const maxPos = stageHeight - cursorHeight;
+  const stage =
+    document.getElementById("meterOverlay");
+
+  const max =
+    stage.clientHeight - 12;
 
   pos += speed * direction;
 
-  if (pos >= maxPos) {
-    pos = maxPos;
+  if (pos >= max) {
+    pos = max;
     direction = -1;
   }
 
@@ -49,89 +91,133 @@ function updateMeter() {
     direction = 1;
   }
 
-  cursor.style.top = `${pos}px`;
+  cursor.style.top = pos + "px";
 
   requestAnimationFrame(updateMeter);
 }
 
-function startBgmOnce() {
-  if (started) return;
-  started = true;
+/* =========================
+   TAP
+========================= */
 
-  bgm.volume = 0.7;
-  bgm.currentTime = 0;
-  bgm.play().catch(() => {});
-}
+tapButton.addEventListener("pointerdown", () => {
 
-function judge() {
-  const stageHeight = getStageHeight();
-  const cursorCenter = pos + getCursorHeight() / 2;
-  const center = stageHeight / 2;
-
-  const perfectRange = 18;
-  return Math.abs(cursorCenter - center) <= perfectRange;
-}
-
-tapButton.addEventListener("click", () => {
   if (!playing) return;
-
-  startBgmOnce();
 
   playing = false;
 
-  const isGood = judge();
+  const stage =
+    document.getElementById("meterOverlay");
 
-  if (isGood) {
+  const center =
+    stage.clientHeight / 2;
+
+  const cursorCenter =
+    pos + 6;
+
+  const good =
+    Math.abs(cursorCenter - center) <= 18;
+
+  if (good) {
+
     goodCount++;
-    cucumber.src = "cucumber_broken.png";
-    message.innerText = "GOOD!";
+
+    cucumber.src =
+      "cucumber_broken.png";
+
     pokiSe.currentTime = 0;
+
     pokiSe.play().catch(() => {});
+
   } else {
-    cucumber.src = "cucumber_bad.png";
-    message.innerText = "モロキューさん…";
+
+    cucumber.src =
+      "cucumber_bad.png";
+
     funyaSe.currentTime = 0;
+
     funyaSe.play().catch(() => {});
   }
 
-  setTimeout(nextRound, 1000);
+  setTimeout(nextRound, 950);
 });
 
+/* =========================
+   NEXT
+========================= */
+
 function nextRound() {
+
   if (round >= 3) {
-    showResult();
+    endGame();
     return;
   }
 
   round++;
-  roundText.innerText = `ROUND ${round} / 3`;
 
-  cucumber.src = "cucumber_straight.png";
-  message.innerText = "赤いところで押せ！";
+  roundText.textContent =
+    `ROUND ${round} / 3`;
+
+  cucumber.src =
+    "cucumber_straight.png";
 
   pos = 0;
+
   direction = 1;
+
   playing = true;
 
   updateMeter();
 }
 
-function showResult() {
-  tapButton.style.display = "none";
+/* =========================
+   RESULT
+========================= */
+
+function endGame() {
+
+  bgm.pause();
+
+  gameScreen.classList.add("hidden");
+
   resultScreen.classList.remove("hidden");
 
-  scoreText.innerText = `${goodCount} / 3 GOOD`;
+  resultScore.innerHTML =
+    `${goodCount} / 3 GOOD`;
 
   if (goodCount === 3) {
-    finalResult.innerText = "河童名人！";
-    resultKappa.src = "kappa3.png";
+
+    resultTitle.innerHTML =
+      "河童名人！";
+
+    resultKappa.src =
+      "kappa3.png";
+
   } else if (goodCount >= 1) {
-    finalResult.innerText = "いいもろきゅう！";
-    resultKappa.src = "kappa1_2.png";
+
+    resultTitle.innerHTML =
+      "いいもろきゅう！";
+
+    resultKappa.src =
+      "kappa1_2.png";
+
   } else {
-    finalResult.innerText = "モロキューさん…";
-    resultKappa.src = "kappa0.png";
+
+    resultTitle.innerHTML =
+      "モロキューさん…";
+
+    resultKappa.src =
+      "kappa0.png";
   }
 }
 
-updateMeter();
+/* =========================
+   RESTART
+========================= */
+
+document
+  .getElementById("restartBtn")
+  .addEventListener("pointerdown", () => {
+
+    location.reload();
+  });

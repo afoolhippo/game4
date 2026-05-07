@@ -1,175 +1,360 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+html,
 body {
+
   margin: 0;
-  background: #d7f0a1;
-  color: #1c2b1c;
-  font-family: monospace;
-  text-align: center;
+  padding: 0;
+
   overflow: hidden;
-}
 
-#game {
-  max-width: 430px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 12px 16px 18px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  touch-action: manipulation;
 
-#game-header {
-  width: 100%;
-}
+  background:
+    radial-gradient(circle at top,
+      #eff7b7 0%,
+      #cfe27a 55%,
+      #8cab47 100%);
 
-h1 {
-  margin: 8px 0 4px;
-  font-size: 28px;
-  line-height: 1.1;
-}
-
-#round {
-  font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 8px;
-}
-
-#cucumber-stage {
-  position: relative;
-  width: min(72vw, 280px);
-  height: min(58vh, 440px);
-  margin: 6px auto 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#cucumber {
-  position: absolute;
-  z-index: 1;
-  height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-}
-
-#meter-overlay {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  pointer-events: none;
-}
-
-#perfect-zone {
-  position: absolute;
-  top: 50%;
-  left: -12%;
-  width: 124%;
-  height: 36px;
-  transform: translateY(-50%);
-  background: rgba(210, 50, 55, 0.88);
-  border-top: 3px solid #1c2b1c;
-  border-bottom: 3px solid #1c2b1c;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: pushBlink 0.45s infinite alternate;
-}
-
-#perfect-zone span {
-  color: #fff;
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0 #1c2b1c;
-}
-
-#cursor {
-  position: absolute;
-  left: -16%;
-  width: 132%;
-  height: 12px;
-  background: #fff;
-  border: 3px solid #1c2b1c;
-  box-sizing: border-box;
-  top: 0;
-}
-
-#message {
-  height: 32px;
-  font-size: 20px;
-  font-weight: bold;
-  margin: 4px 0 8px;
-}
-
-#tapButton {
-  width: min(86vw, 320px);
-  height: 72px;
-  font-size: 28px;
-  font-weight: bold;
   font-family: monospace;
-  border: 4px solid #1c2b1c;
-  background: #d94b4b;
-  color: #fff;
-  box-shadow: 0 6px 0 #842b2b;
-}
-
-#tapButton:active {
-  transform: translateY(5px);
-  box-shadow: 0 1px 0 #842b2b;
 }
 
 .hidden {
   display: none !important;
 }
 
-#result-screen {
-  position: fixed;
-  inset: 0;
-  background: #d7f0a1;
-  z-index: 10;
-  padding: 28px 18px;
-  box-sizing: border-box;
+.screen {
+
+  width: 100vw;
+  height: 100vh;
+}
+
+/* =========================
+   TITLE
+========================= */
+
+#titleScreen {
+
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
-  justify-content: center;
+
+  justify-content: flex-start;
+
+  padding-top: 26px;
+
+  box-sizing: border-box;
 }
 
-#final-result {
-  font-size: 34px;
-  margin: 0 0 18px;
-}
+#titleImage {
 
-#result-kappa {
-  width: min(58vw, 220px);
+  width: min(430px, 92vw);
+
   image-rendering: pixelated;
-  margin-bottom: 12px;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
 }
 
-#score-text {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 8px 0 24px;
+/* =========================
+   PRESS START
+========================= */
+
+#pressStart {
+
+  margin-top: 18px;
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 28px;
+
+  color: #1f3312;
+
+  letter-spacing: 2px;
+
+  animation: blink 1s steps(1) infinite;
 }
 
-#retryButton {
-  width: 220px;
-  height: 62px;
+@keyframes blink {
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   GUIDE
+========================= */
+
+#guideText {
+
+  margin-top: 30px;
+
+  text-align: center;
+
+  font-family: "DotGothic16", monospace;
+
+  color: #1f3312;
+
+  font-size: 17px;
+
+  line-height: 1.9;
+}
+
+/* =========================
+   GAME
+========================= */
+
+#gameScreen {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+}
+
+/* =========================
+   HUD
+========================= */
+
+#hud {
+
+  width: min(430px, 100vw);
+
+  padding: 14px 18px 8px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+}
+
+#roundText {
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 26px;
+
+  color: #1f3312;
+
+  text-shadow: 2px 2px #e6f2b2;
+}
+
+/* =========================
+   STAGE
+========================= */
+
+#cucumberStage {
+
+  position: relative;
+
+  width: min(72vw, 290px);
+
+  height: min(60vh, 460px);
+
+  margin-top: 8px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+}
+
+#cucumber {
+
+  position: absolute;
+
+  z-index: 1;
+
+  height: 100%;
+
+  max-width: 100%;
+
+  object-fit: contain;
+
+  image-rendering: pixelated;
+}
+
+/* =========================
+   METER
+========================= */
+
+#meterOverlay {
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+}
+
+#perfectZone {
+
+  position: absolute;
+
+  top: 50%;
+
+  left: -12%;
+
+  width: 124%;
+
+  height: 38px;
+
+  transform: translateY(-50%);
+
+  background: rgba(214, 51, 51, 0.88);
+
+  border-top: 3px solid #1f3312;
+
+  border-bottom: 3px solid #1f3312;
+
+  box-sizing: border-box;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-family: "DotGothic16", monospace;
+
   font-size: 24px;
-  font-weight: bold;
-  font-family: monospace;
-  border: 4px solid #1c2b1c;
-  background: #fff;
-  color: #1c2b1c;
+
+  color: white;
+
+  letter-spacing: 2px;
+
+  text-shadow: 2px 2px #1f3312;
+
+  animation: pushBlink 0.5s infinite alternate;
 }
 
 @keyframes pushBlink {
+
   from {
-    opacity: 0.65;
+    opacity: 0.6;
   }
+
   to {
     opacity: 1;
   }
+}
+
+#cursor {
+
+  position: absolute;
+
+  left: -16%;
+
+  width: 132%;
+
+  height: 12px;
+
+  background: white;
+
+  border: 3px solid #1f3312;
+
+  box-sizing: border-box;
+
+  top: 0;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+#tapButton {
+
+  margin-top: 18px;
+
+  width: min(84vw, 320px);
+
+  height: 76px;
+
+  border: 4px solid #1f3312;
+
+  background: #c94141;
+
+  color: #fff7d4;
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 30px;
+
+  box-shadow: 4px 4px 0 #1f3312;
+}
+
+#tapButton:active {
+
+  transform: translate(4px, 4px);
+
+  box-shadow: none;
+}
+
+/* =========================
+   RESULT
+========================= */
+
+#resultScreen {
+
+  overflow-y: auto;
+}
+
+#resultInner {
+
+  width: min(420px, 92vw);
+
+  margin: 0 auto;
+
+  padding: 22px 0 40px;
+
+  text-align: center;
+}
+
+#resultInner h1 {
+
+  margin: 0 0 12px;
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 38px;
+
+  color: #1f3312;
+}
+
+#resultKappa {
+
+  width: min(58vw, 220px);
+
+  image-rendering: pixelated;
+
+  margin-bottom: 14px;
+}
+
+#resultTitle {
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 28px;
+
+  color: #1f3312;
+
+  margin-bottom: 12px;
+}
+
+#resultScore {
+
+  font-family: "DotGothic16", monospace;
+
+  font-size: 22px;
+
+  color: #1f3312;
+
+  line-height: 1.7;
 }
