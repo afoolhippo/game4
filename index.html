@@ -1,89 +1,13 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-  <title>ポキポキきゅうり</title>
-
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- =========================
-     TITLE
-========================= -->
-
-<div id="titleScreen" class="screen">
-
-  <img src="title.png"
-       id="titleImage"
-       alt="ポキポキきゅうり">
-
-  <div id="pressStart">
-    PRESS START
-  </div>
-
-  <div id="guideText">
-    赤いところでポキッ！！<br>
-    3本勝負！
-  </div>
-
-</div>
-
-<!-- =========================
-     GAME
-========================= -->
-
-<div id="gameScreen" class="screen hidden">
-
-  <div id="hud">
-    <div id="roundText">
-      ROUND 1 / 3
-    </div>
-  </div>
-
-  <div id="cucumberStage">
-
-    <img id="cucumber"
-         src="cucumber_straight.png"
-         alt="きゅうり">
-
-    <div id="meterOverlay">
-
-      <div id="perfectZone">
-        PUSH!
-      </div>
-
-      <div id="cursor"></div>
-
-    </div>
-
-  </div>
-
-  <button id="tapButton">
-    ポキッ！！
-  </button>
-
-</div>
-
-<!-- =========================
-     RESULT
-========================= -->
-
 <div id="resultScreen"
      class="screen hidden">
 
   <div id="resultInner">
 
-    <h1>RESULT!!</h1>
+    <h1 id="resultTitle"></h1>
 
     <img id="resultKappa"
          src=""
          alt="河童">
-
-    <div id="resultTitle"></div>
 
     <div id="resultScore"></div>
 
@@ -94,22 +18,3 @@
   </div>
 
 </div>
-
-<!-- =========================
-     AUDIO
-========================= -->
-
-<audio id="bgm"
-       src="bgm.mp3"
-       loop></audio>
-
-<audio id="pokiSe"
-       src="poki_se.mp3"></audio>
-
-<audio id="funyaSe"
-       src="funya_se.mp3"></audio>
-
-<script src="game.js"></script>
-
-</body>
-</html>

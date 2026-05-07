@@ -1,302 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
-
-html,
-body {
-
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-
-  touch-action: manipulation;
-
-  background:
-    radial-gradient(circle at top,
-      #eff7b7 0%,
-      #cfe27a 55%,
-      #8cab47 100%);
-
-  font-family: monospace;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.screen {
-
-  width: 100vw;
-  height: 100vh;
-}
-
-/* =========================
-   TITLE
-========================= */
-
-#titleScreen {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: flex-start;
-
-  padding-top: 26px;
-
-  box-sizing: border-box;
-}
-
-#titleImage {
-
-  width: min(430px, 92vw);
-
-  image-rendering: pixelated;
-
-  user-select: none;
-
-  -webkit-user-drag: none;
-}
-
-/* =========================
-   PRESS START
-========================= */
-
-#pressStart {
-
-  margin-top: 18px;
-
-  font-family: "DotGothic16", monospace;
-
-  font-size: 28px;
-
-  color: #1f3312;
-
-  letter-spacing: 2px;
-
-  animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink {
-
-  50% {
-    opacity: 0;
-  }
-}
-
-/* =========================
-   GUIDE
-========================= */
-
-#guideText {
-
-  margin-top: 30px;
-
-  text-align: center;
-
-  font-family: "DotGothic16", monospace;
-
-  color: #1f3312;
-
-  font-size: 17px;
-
-  line-height: 1.9;
-}
-
-/* =========================
-   GAME
-========================= */
-
-#gameScreen {
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-}
-
-/* =========================
-   HUD
-========================= */
-
-#hud {
-
-  width: min(430px, 100vw);
-
-  padding: 14px 18px 8px;
-
-  box-sizing: border-box;
-
-  text-align: center;
-}
-
-#roundText {
-
-  font-family: "DotGothic16", monospace;
-
-  font-size: 26px;
-
-  color: #1f3312;
-
-  text-shadow: 2px 2px #e6f2b2;
-}
-
-/* =========================
-   STAGE
-========================= */
-
-#cucumberStage {
-
-  position: relative;
-
-  width: min(72vw, 290px);
-
-  height: min(60vh, 460px);
-
-  margin-top: 8px;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-}
-
-#cucumber {
-
-  position: absolute;
-
-  z-index: 1;
-
-  height: 100%;
-
-  max-width: 100%;
-
-  object-fit: contain;
-
-  image-rendering: pixelated;
-}
-
-/* =========================
-   METER
-========================= */
-
-#meterOverlay {
-
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 2;
-
-  pointer-events: none;
-}
-
-#perfectZone {
-
-  position: absolute;
-
-  top: 50%;
-
-  left: -12%;
-
-  width: 124%;
-
-  height: 38px;
-
-  transform: translateY(-50%);
-
-  background: rgba(214, 51, 51, 0.88);
-
-  border-top: 3px solid #1f3312;
-
-  border-bottom: 3px solid #1f3312;
-
-  box-sizing: border-box;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  font-family: "DotGothic16", monospace;
-
-  font-size: 24px;
-
-  color: white;
-
-  letter-spacing: 2px;
-
-  text-shadow: 2px 2px #1f3312;
-
-  animation: pushBlink 0.5s infinite alternate;
-}
-
-@keyframes pushBlink {
-
-  from {
-    opacity: 0.6;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-#cursor {
-
-  position: absolute;
-
-  left: -16%;
-
-  width: 132%;
-
-  height: 12px;
-
-  background: white;
-
-  border: 3px solid #1f3312;
-
-  box-sizing: border-box;
-
-  top: 0;
-}
-
-/* =========================
-   BUTTON
-========================= */
-
-#tapButton {
-
-  margin-top: 18px;
-
-  width: min(84vw, 320px);
-
-  height: 76px;
-
-  border: 4px solid #1f3312;
-
-  background: #c94141;
-
-  color: #fff7d4;
-
-  font-family: "DotGothic16", monospace;
-
-  font-size: 30px;
-
-  box-shadow: 4px 4px 0 #1f3312;
-}
-
-#tapButton:active {
-
-  transform: translate(4px, 4px);
-
-  box-shadow: none;
-}
-
 /* =========================
    RESULT
 ========================= */
@@ -312,20 +13,24 @@ body {
 
   margin: 0 auto;
 
-  padding: 22px 0 40px;
+  padding: 28px 0 40px;
 
   text-align: center;
 }
 
-#resultInner h1 {
+#resultTitle {
 
-  margin: 0 0 12px;
+  margin: 0 0 18px;
 
   font-family: "DotGothic16", monospace;
 
   font-size: 38px;
 
+  line-height: 1.15;
+
   color: #1f3312;
+
+  text-shadow: 3px 3px #dceca3;
 }
 
 #resultKappa {
@@ -334,10 +39,10 @@ body {
 
   image-rendering: pixelated;
 
-  margin-bottom: 14px;
+  margin-bottom: 18px;
 }
 
-#resultTitle {
+#resultScore {
 
   font-family: "DotGothic16", monospace;
 
@@ -345,16 +50,37 @@ body {
 
   color: #1f3312;
 
+  line-height: 1.7;
+
   margin-bottom: 12px;
 }
 
-#resultScore {
+/* =========================
+   BUTTON
+========================= */
+
+#restartBtn {
+
+  margin-top: 20px;
+
+  padding: 12px 28px;
+
+  border: 4px solid #1f3312;
+
+  background: #5f9c3c;
+
+  color: #f6ffd8;
 
   font-family: "DotGothic16", monospace;
 
   font-size: 22px;
 
-  color: #1f3312;
+  box-shadow: 4px 4px 0 #2d5016;
+}
 
-  line-height: 1.7;
+#restartBtn:active {
+
+  transform: translate(4px, 4px);
+
+  box-shadow: none;
 }
