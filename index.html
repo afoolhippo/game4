@@ -12,17 +12,19 @@
 <div id="titleScreen" class="screen">
   <img src="title.png" id="titleImage" alt="ポキポキきゅうり">
 
-  <div id="pressStart">PRESS START</div>
-
   <div id="guideText">
     赤いところでポキッ！！<br>
     3本勝負！
   </div>
+
+  <button id="startBtn">タップしてスタート</button>
 </div>
 
 <div id="gameScreen" class="screen hidden">
+  <button id="backTitleBtn">タイトルへ戻る</button>
+
   <div id="hud">
-    <div id="roundText">ROUND 1 / 3</div>
+    <div id="roundText">1本目</div>
   </div>
 
   <div id="cucumberStage">
@@ -44,8 +46,13 @@
     <img id="resultKappa" src="" alt="河童">
 
     <div id="resultScore"></div>
+    <div id="resultSummary"></div>
 
-    <button id="restartBtn">もう一回</button>
+    <div id="resultButtons">
+      <button id="shareBtn">Xでシェア</button>
+      <button id="restartBtn">もう1回遊ぶ</button>
+      <button id="homeBtn">カバゲーセンへ</button>
+    </div>
   </div>
 </div>
 

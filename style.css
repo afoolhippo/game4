@@ -43,28 +43,40 @@ body {
   -webkit-user-drag: none;
 }
 
-#pressStart {
-  margin-top: 18px;
-  font-family: "DotGothic16", monospace;
-  font-size: 28px;
-  color: #1f3312;
-  letter-spacing: 2px;
-  animation: blink 1s steps(1) infinite;
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
-
 #guideText {
-  margin-top: 30px;
+  margin-top: 26px;
   text-align: center;
   font-family: "DotGothic16", monospace;
   color: #1f3312;
   font-size: 17px;
   line-height: 1.9;
+}
+
+button {
+  font-family: "DotGothic16", monospace;
+  border: 4px solid #1f3312;
+  box-shadow: 4px 4px 0 #2d5016;
+  touch-action: manipulation;
+}
+
+button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+#startBtn {
+  margin-top: 24px;
+  padding: 13px 24px;
+  background: #5f9c3c;
+  color: #f6ffd8;
+  font-size: 22px;
+  animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.45;
+  }
 }
 
 /* GAME */
@@ -73,18 +85,31 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+#backTitleBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  padding: 7px 10px;
+  background: #f6ffd8;
+  color: #1f3312;
+  font-size: 13px;
+  box-shadow: 3px 3px 0 #2d5016;
 }
 
 #hud {
   width: min(430px, 100vw);
-  padding: 14px 18px 8px;
+  padding: 44px 18px 6px;
   box-sizing: border-box;
   text-align: center;
 }
 
 #roundText {
   font-family: "DotGothic16", monospace;
-  font-size: 26px;
+  font-size: 28px;
   color: #1f3312;
   text-shadow: 2px 2px #e6f2b2;
 }
@@ -92,8 +117,8 @@ body {
 #cucumberStage {
   position: relative;
   width: min(72vw, 290px);
-  height: min(60vh, 460px);
-  margin-top: 8px;
+  height: min(58vh, 450px);
+  margin-top: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -162,20 +187,12 @@ body {
 }
 
 #tapButton {
-  margin-top: 18px;
+  margin-top: 16px;
   width: min(84vw, 320px);
   height: 76px;
-  border: 4px solid #1f3312;
   background: #c94141;
   color: #fff7d4;
-  font-family: "DotGothic16", monospace;
   font-size: 30px;
-  box-shadow: 4px 4px 0 #1f3312;
-}
-
-#tapButton:active {
-  transform: translate(4px, 4px);
-  box-shadow: none;
 }
 
 /* RESULT */
@@ -187,12 +204,12 @@ body {
 #resultInner {
   width: min(420px, 92vw);
   margin: 0 auto;
-  padding: 28px 0 40px;
+  padding: 26px 0 40px;
   text-align: center;
 }
 
 #resultTitle {
-  margin: 0 0 18px;
+  margin: 0 0 14px;
   font-family: "DotGothic16", monospace;
   font-size: 38px;
   line-height: 1.15;
@@ -201,31 +218,54 @@ body {
 }
 
 #resultKappa {
-  width: min(58vw, 220px);
+  width: min(54vw, 210px);
   image-rendering: pixelated;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
 }
 
 #resultScore {
   font-family: "DotGothic16", monospace;
-  font-size: 28px;
+  font-size: 26px;
   color: #1f3312;
-  line-height: 1.7;
-  margin-bottom: 12px;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
-#restartBtn {
-  margin-top: 20px;
-  padding: 12px 28px;
-  border: 4px solid #1f3312;
-  background: #5f9c3c;
-  color: #f6ffd8;
+#resultSummary {
   font-family: "DotGothic16", monospace;
-  font-size: 22px;
+  font-size: 17px;
+  color: #1f3312;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+#resultButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+#resultButtons button {
+  width: min(84vw, 300px);
+  padding: 12px 10px;
+  background: #f6ffd8;
+  color: #1f3312;
+  font-size: 20px;
+}
+
+#shareBtn {
+  background: #111 !important;
+  color: #fff !important;
   box-shadow: 4px 4px 0 #2d5016;
 }
 
-#restartBtn:active {
-  transform: translate(4px, 4px);
-  box-shadow: none;
+#restartBtn {
+  background: #5f9c3c !important;
+  color: #f6ffd8 !important;
+}
+
+#homeBtn {
+  background: #c94141 !important;
+  color: #fff7d4 !important;
 }
