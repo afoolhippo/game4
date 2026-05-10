@@ -70,7 +70,6 @@ button:active {
   background: #5f9c3c;
   color: #f6ffd8;
   font-size: 22px;
-  animation: blink 1s steps(1) infinite;
 }
 
 @keyframes blink {
